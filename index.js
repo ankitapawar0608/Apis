@@ -14,11 +14,27 @@ app.get("/healthy",(req,res)=>{
 
 })
 
-app.get("/pizza",(req,res)=>{
-res.json({
-    message:"Pizza is ready",
-    price :"Rs 200"
+//Query Parameter
+
+app.get("/info",(req,res)=>{
+const {name,age,city} = req.query;
+
+    res.json({
+        message:`I am ${name} from ${city}`,
+        age:`And I am ${age} year old`
+    })
+
 })
+
+//Path Parameter
+
+app.get("/food/:type",(req,res)=>{
+
+    const {type} = req.params;
+
+    res.json({
+        message : `you have ordered ${type} food`
+    })
 })
 
 app.listen(PORT,()=>{

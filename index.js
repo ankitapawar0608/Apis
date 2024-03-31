@@ -17,11 +17,15 @@ app.get("/healthy",(req,res)=>{
 //Query Parameter
 
 app.get("/info",(req,res)=>{
-const {name,age,city} = req.query;
+  const {name,age,city} = req.query;
+
+  //Headers
+ const {clg,branch} = req.headers;
 
     res.json({
         message:`I am ${name} from ${city}`,
-        age:`And I am ${age} year old`
+        age:`And I am ${age} year old`,
+        details :`I completed my graduation from ${clg} in ${branch} branch`
     })
 
 })
@@ -32,7 +36,7 @@ app.get("/food/:type",(req,res)=>{
 
     const {type} = req.params;
 
-    res.json({
+    return res.json({
         message : `you have ordered ${type} food`
     })
 })

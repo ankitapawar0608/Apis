@@ -2,7 +2,7 @@ import express from "express";
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 const PORT = 5000;
 
@@ -39,6 +39,19 @@ app.get("/food/:type",(req,res)=>{
     return res.json({
         message : `you have ordered ${type} food`
     })
+})
+
+//body
+
+app.post("/user",(req,res)=>{
+
+    const {name,age} = req.body;
+
+
+    res.json({
+        message :`I am ${name} and age is ${22}`
+    })
+
 })
 
 app.listen(PORT,()=>{
